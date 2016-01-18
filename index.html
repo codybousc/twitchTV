@@ -10,18 +10,18 @@
   <body>
 
   <button type="button" class="btn btn-secondary" ng-click="makeAPICall()">Make API Call</button> <br><br>
-
+    {{id}}
   <div class="container" ng-repeat="(key, value) in allUsers">
     Name:  {{value.name}} <br><br>
+    ID: {{id}}
     Bio:  {{value.bio}} <br><br>
     Logo: <div ng-style="{'background-image': 'url({{logo}})'}">{{logo}}</div> <br><br>
-
   </div>
 
 
 
-  secondImageAttempt:     <div ng-style="{'background-image': 'url(http://s8.postimg.org/xkovvmfhh/lacosta.jpg)'}"></div>
-
+<!--   secondImageAttempt:     <div ng-style="{'background-image': 'url(http://s8.postimg.org/xkovvmfhh/lacosta.jpg)'}"></div>
+ -->
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>

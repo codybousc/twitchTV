@@ -8,9 +8,12 @@
 <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 </head>
   <body>
-
   <button type="button" class="btn btn-secondary" ng-click="makeAPICall()">Make API Call</button> <br><br>
-    {{id}}
+
+  <button type="button" class="btn btn-secondary" ng-click="findOfflineUsers()">Find Offline Users</button> <br><br>
+
+
+
   <div class="container" ng-repeat="(key, value) in allUsers">
     Name:  {{value.name}} <br><br>
     ID: {{id}}

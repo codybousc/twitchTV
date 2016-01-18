@@ -2,6 +2,9 @@ twitchTele = angular.module("twitchTele", [])
 
 twitchTele.controller('TeleController', ['$scope','$http',
 function($scope, $http) {
+  $scope.allUsers = [];
+  $scope.onlineUsers = [];
+  $scope.offlineUsers = [];
 
   $scope.channelStatus = "all"
 
@@ -10,13 +13,13 @@ function($scope, $http) {
   //Returns all live channels
   // var url = 'https://api.twitch.tv/kraken/streams?stream_type= '+ $scope.channelStatus + 'all&callback=JSON_CALLBACK';
 
-  var streamUrl = 'https://api.twitch.tv/kraken/streams?channel=freecodecamp,storbeck,terakilobyte,habathcx,RobotCaleb,thomasballinger,noobs2ninjas,beohoff?stream_type='+ $scope.channelStatus + '&callback=JSON_CALLBACK';
+var streamUrl = 'https://api.twitch.tv/kraken/streams?channel=freecodecamp,storbeck,terakilobyte,habathcx,RobotCaleb,thomasballinger,noobs2ninjas,beohoff?stream_type='+ $scope.channelStatus + '&callback=JSON_CALLBACK';
 
 $scope.makeAPICall = function() {
   var userUrl = 'https://api.twitch.tv/kraken/users/';
   var callB = '?callback=JSON_CALLBACK'
-  $scope.allUsers = [];
-  $scope.onlineUsers = [];
+  // $scope.allUsers = [];
+  // $scope.onlineUsers = [];
 
 //TODO This is pushing seven objects seven times. Should push one object 7 times. Needs a fixin.
   for(var i = 0; i < usersToCheck.length; i++) {
@@ -50,7 +53,7 @@ $scope.makeAPICall = function() {
                 if($scope.identificationNum == $scope.allUsers[i].idNum) {
                   $scope.allUsers[i].online = true;
                   $scope.allUsers[i].status = $scope.status;
-                  // console.log("Gotcha! ", $scope.allUsers[i]);
+                  console.log("Gotcha! ", $scope.allUsers[i]);
                   $scope.onlineUsers.push($scope.allUsers[i]);
               }
               // console.log($scope.identificationNum);
@@ -64,6 +67,15 @@ $scope.makeAPICall = function() {
             console.log(data);
           })
 
+    }
+
+    $scope.findOfflineUsers = function() {
+      for(var i = 0; i < $scope.allUsers.length; i++) {
+        if($scope.allUsers[i].online == false) {
+          $scope.offlineUsers.push($scope.allUsers[i]);
+        }
+      }
+      console.log("FROM OFFLINE USERS FUNCTION ", $scope.offlineUsers);
     }
 
 

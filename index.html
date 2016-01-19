@@ -15,10 +15,13 @@
 
 
   <div class="container" ng-repeat="(key, value) in allUsers">
-    Name:  {{value.name}} <br><br>
-    ID: {{id}}
+    <div class="imageStylin">
+        <div class="thumbnail" ng-style="{'background-image': 'url({{value.logo}})'}" style="height: 150px; width 100px; overflow: hidden; background-size: cover; background-position: center;"></div> <br><br>
+    </div>
+<!--     Logo: <div class="thumbnail" ng-style="{'background-image': 'url({{value.logo}})'}" style="height: 200px; width 100px;">{{value.logo}}</div> <br><br>
+ -->    Name:  {{value.name}} <br><br>
+    ID: {{idNum}}
     Bio:  {{value.bio}} <br><br>
-    Logo: <div ng-style="{'background-image': 'url({{logo}})'}">{{logo}}</div> <br><br>
   </div>
 
 

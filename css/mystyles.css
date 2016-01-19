@@ -18,3 +18,14 @@ body {
   padding-bottom: 10px;
 
 }
+
+.container background-image{
+  height: 1150;
+  width: 150;
+  border: 11px solid yellow;
+}
+
+.imageStylin {
+  width: 200px;
+  height: 200px;
+}

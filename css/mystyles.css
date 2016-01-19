@@ -1,7 +1,8 @@
 body {
-/*   background-color: #162234;
- */  font: 300 16px/22px "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
+  background-color: #162234;
+  font: 300 16px/22px "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+/*    background-image: url(images/broken_television_by_samgoesdown.jpg); background-repeat: none; background-size: cover; background-position: center; position: fixed;
+ */}
 
 .jumbotron {
   text-align: center;
@@ -19,13 +20,18 @@ body {
 
 }
 
-.container background-image{
-  height: 1150;
-  width: 150;
-  border: 11px solid yellow;
-}
-
 .imageStylin {
+  margin-top: 20px;
+  margin-right: 20px;
   width: 200px;
   height: 200px;
+  float: left;
+}
+
+.userDeets {
+  margin-top: 20px;
+}
+
+.userName {
+  font-size: 25px;
 }

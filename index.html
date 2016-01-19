@@ -7,27 +7,27 @@
 <link rel="stylesheet" href="css/mystyles.css" type="text/css">
 <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 </head>
-  <body>
-  <button type="button" class="btn btn-secondary" ng-click="makeAPICall()">Make API Call</button> <br><br>
+  <body ng-init="makeAPICall()">
 
-  <button type="button" class="btn btn-secondary" ng-click="findOfflineUsers()">Find Offline Users</button> <br><br>
-
-
-
-  <div class="container" ng-repeat="(key, value) in allUsers">
-    <div class="imageStylin">
-        <div class="thumbnail" ng-style="{'background-image': 'url({{value.logo}})'}" style="height: 150px; width 100px; overflow: hidden; background-size: cover; background-position: center;"></div> <br><br>
+    <div class="text-center">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-secondary" ng-click="makeAPICall()" >All Users </button>
+        <button type="button" class="btn btn-secondary" ng-click="displayOnlineUsers()" >Live Users </button>
+        <button type="button" class="btn btn-secondary" ng-click="displayOfflineUsers()"> Offline Users</button>
+      </div>
     </div>
-<!--     Logo: <div class="thumbnail" ng-style="{'background-image': 'url({{value.logo}})'}" style="height: 200px; width 100px;">{{value.logo}}</div> <br><br>
- -->    Name:  {{value.name}} <br><br>
-    ID: {{idNum}}
-    Bio:  {{value.bio}} <br><br>
-  </div>
 
+    <div class="container" ng-repeat="(key, value) in results track by $index">
+      <div class="imageStylin">
+          <div class="thumbnail" ng-style="{'background-image': 'url({{value.logo}})'}" style="height: 150px; width 100px; overflow: hidden; background-size: cover; background-position: center;"></div> <br><br>
+      </div>
+      <div class="userDeets">
+         <span class="userName">{{value.name}}</span>   <br><br>
+         Bio:  {{value.bio}} <br><br>
+         Online: {{value.online}}
+      </div>
+    </div>
 
-
-<!--   secondImageAttempt:     <div ng-style="{'background-image': 'url(http://s8.postimg.org/xkovvmfhh/lacosta.jpg)'}"></div>
- -->
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>

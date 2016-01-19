@@ -6,6 +6,7 @@ function($scope, $http) {
   $scope.onlineUsers = [];
   $scope.offlineUsers = [];
   $scope.channelStatus = "all"
+  $scope.results;
 
   var usersToCheck = ["freecodecamp", "storbeck", "terakilobyte", "habathcx","RobotCaleb","thomasballinger","noobs2ninjas","beohoff"];
 
@@ -30,9 +31,13 @@ $scope.makeAPICall = function() {
           var online = false;
 
           if(!logo) {
-            logo = "http://s10.postimg.org/wm5zuj6nd/thumbnail.jpg"; 
+            logo = "http://s10.postimg.org/wm5zuj6nd/thumbnail.jpg";
+          }
+          if (!bio) {
+            bio = "I've got nothing for ya, brother. But consider watching my channel anyway?"
           }
           $scope.allUsers.push({name: name, bio: bio, logo: logo, idNum: idNum, online: online});
+          $scope.results = $scope.allUsers;
           console.log($scope.allUsers);
 
         }).
@@ -67,13 +72,21 @@ $scope.makeAPICall = function() {
 
     }
 
-    $scope.findOfflineUsers = function() {
+
+    $scope.displayOfflineUsers = function() {
       for(var i = 0; i < $scope.allUsers.length; i++) {
         if($scope.allUsers[i].online == false) {
           $scope.offlineUsers.push($scope.allUsers[i]);
         }
       }
+      $scope.results = $scope.offlineUsers;
     }
+
+    $scope.displayOnlineUsers = function() {
+      $scope.results = $scope.onlineUsers;
+    }
+
+
 
 
 }]);

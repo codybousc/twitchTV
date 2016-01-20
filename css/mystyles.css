@@ -35,3 +35,7 @@ body {
 .userName {
   font-size: 25px;
 }
+
+.onlineStatus {
+  font-size: 20px; 
+}

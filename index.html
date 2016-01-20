@@ -11,7 +11,7 @@
 
     <div class="text-center">
       <div class="btn-group" role="group">
-        <button type="button" class="btn btn-secondary" ng-click="makeAPICall()" >All Users </button>
+        <button type="button" class="btn btn-secondary" ng-click="displayAllUsers()" >All Users </button>
         <button type="button" class="btn btn-secondary" ng-click="displayOnlineUsers()" >Live Users </button>
         <button type="button" class="btn btn-secondary" ng-click="displayOfflineUsers()"> Offline Users</button>
       </div>
@@ -22,9 +22,8 @@
           <div class="thumbnail" ng-style="{'background-image': 'url({{value.logo}})'}" style="height: 150px; width 100px; overflow: hidden; background-size: cover; background-position: center;"></div> <br><br>
       </div>
       <div class="userDeets">
-         <span class="userName">{{value.name}}</span>   <br><br>
+        <span class="userName">{{value.name}} </span> <span class="onlineStatus">(Currently {{value.online == true && "Online" || "Offline"}})</span>   <br><br>
          Bio:  {{value.bio}} <br><br>
-         Online: {{value.online}}
       </div>
     </div>
 

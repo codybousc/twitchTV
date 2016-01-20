@@ -2,8 +2,8 @@ twitchTele = angular.module("twitchTele", [])
 
 twitchTele.controller('TeleController', ['$scope','$http',
 function($scope, $http) {
-  $scope.allUsers = [];
-  $scope.onlineUsers = [];
+  $scope.allUsers = [{name: "We always be here!", bio: "We Good", logo: "http://s10.postimg.org/wm5zuj6nd/thumbnail.jpg", idNum: 513, online: true}];
+  $scope.onlineUsers = [{name: "We always be here!", bio: "We Good", logo: "http://s10.postimg.org/wm5zuj6nd/thumbnail.jpg", idNum: 513, online: true}];
   $scope.offlineUsers = [];
   $scope.channelStatus = "all"
   $scope.results;
@@ -20,7 +20,6 @@ $scope.makeAPICall = function() {
 //TODO This is pushing seven objects seven times. Should push one object 7 times. Needs a fixin.
   for(var i = 0; i < usersToCheck.length; i++) {
       var userName = usersToCheck[i];
-      console.log("URL = ", userUrl);
       $http.jsonp(userUrl + userName + callB).
         success(function(data, status) {
           $scope.data = data;
@@ -29,7 +28,6 @@ $scope.makeAPICall = function() {
           var logo = data.logo;
           var idNum = data._id;
           var online = false;
-
           if(!logo) {
             logo = "http://s10.postimg.org/wm5zuj6nd/thumbnail.jpg";
           }
@@ -37,9 +35,8 @@ $scope.makeAPICall = function() {
             bio = "I've got nothing for ya, brother. But consider watching my channel anyway?"
           }
           $scope.allUsers.push({name: name, bio: bio, logo: logo, idNum: idNum, online: online});
+          // console.log("ALLUSERS ARRAY Length= ", $scope.allUsers.length );
           $scope.results = $scope.allUsers;
-          console.log($scope.allUsers);
-
         }).
         error(function(data, status, headers, config) {
           console.log(status, data);
@@ -50,7 +47,8 @@ $scope.makeAPICall = function() {
           success(function(streamData) {
             $scope.streamData = streamData;
             //TODO This should check for all online users, and not just the first online user!
-            console.log("streamData.streams[0] ", streamData.streams[0])
+
+            //Checks to see if there are any live users, and sets their identificationnum if so
             if(streamData.streams[0]) {
               $scope.identificationNum = streamData.streams[0].channel._id;
               $scope.status = streamData.streams[0].channel.status;
@@ -89,6 +87,9 @@ $scope.makeAPICall = function() {
       $scope.results = $scope.onlineUsers;
     }
 
+    $scope.displayAllUsers = function() {
+      $scope.results = $scope.allUsers;
+    }
 
 
 

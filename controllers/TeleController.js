@@ -2,8 +2,8 @@ twitchTele = angular.module("twitchTele", [])
 
 twitchTele.controller('TeleController', ['$scope','$http',
 function($scope, $http) {
-  $scope.allUsers = [{name: "We always be here!", bio: "We Good", logo: "http://s10.postimg.org/wm5zuj6nd/thumbnail.jpg", idNum: 513, online: true}];
-  $scope.onlineUsers = [{name: "We always be here!", bio: "We Good", logo: "http://s10.postimg.org/wm5zuj6nd/thumbnail.jpg", idNum: 513, online: true}];
+  $scope.allUsers = [{name: "We always be here!", bio: "We Good", logo: "http://s10.postimg.org/wm5zuj6nd/thumbnail.jpg", idNum: 513, online: true, status: "We'll be doing amazing things!"}];
+  $scope.onlineUsers = [{name: "We always be here!", bio: "We Good", logo: "http://s10.postimg.org/wm5zuj6nd/thumbnail.jpg", idNum: 513, online: true, status: "We'll be doing amazing things!"}];
   $scope.offlineUsers = [];
   $scope.channelStatus = "all"
   $scope.results;
@@ -51,7 +51,13 @@ $scope.makeAPICall = function() {
             //Checks to see if there are any live users, and sets their identificationnum if so
             if(streamData.streams[0]) {
               $scope.identificationNum = streamData.streams[0].channel._id;
-              $scope.status = streamData.streams[0].channel.status;
+              if (streamData.streams[0].channel.status) {
+                  $scope.status = streamData.streams[0].channel.status;
+              }
+              else {
+                $scope.status = "We don't add much info to our profile. Consider watching our feed anyway?"
+              }
+
             }
 
             //Finds online users, sets their online status to true and gives them a status description--if it exists.

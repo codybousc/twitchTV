@@ -50,8 +50,12 @@ $scope.makeAPICall = function() {
           success(function(streamData) {
             $scope.streamData = streamData;
             //TODO This should check for all online users, and not just the first online user!
-            $scope.identificationNum = streamData.streams[0].channel._id;
-            $scope.status = streamData.streams[0].channel.status;
+            console.log("streamData.streams[0] ", streamData.streams[0])
+            if(streamData.streams[0]) {
+              $scope.identificationNum = streamData.streams[0].channel._id;
+              $scope.status = streamData.streams[0].channel.status;
+            }
+
             //Finds online users, sets their online status to true and gives them a status description--if it exists.
             for(var i = 0; i < $scope.allUsers.length; i++) {
               if($scope.identificationNum == $scope.allUsers[i].idNum) {
@@ -71,7 +75,6 @@ $scope.makeAPICall = function() {
           })
 
     }
-
 
     $scope.displayOfflineUsers = function() {
       for(var i = 0; i < $scope.allUsers.length; i++) {

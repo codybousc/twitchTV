@@ -16,13 +16,14 @@
         <button type="button" class="btn btn-secondary" ng-click="displayOfflineUsers()"> Offline Users</button>
       </div>
     </div>
+    <div class="spacer"></div>
 
     <div class="container" ng-repeat="(key, value) in results track by $index">
       <div class="imageStylin">
           <div class="thumbnail" ng-style="{'background-image': 'url({{value.logo}})'}" style="height: 150px; width 100px; overflow: hidden; background-size: cover; background-position: center;"></div> <br><br>
       </div>
       <div class="userDeets">
-        <span class="userName">{{value.name}} </span> <span class="onlineStatus">(Currently {{value.online == true && "Online" || "Offline"}})</span>   <br><br>
+        <span class="userName"><a href="http://www.twitch.tv/{{value.name}}">{{value.name}}</a> </span> <span class="onlineStatus">(Currently {{value.online == true && "Online" || "Offline"}}) </span> <span ng-show="{{value.online}}"><img src="css/images/signalStrengthDeux.png" alt="signal strength" class="antenna"></span>   <br><br>
          Bio:  {{value.bio}} <br><br>
         <span style="font-weight: bold;">{{value.status}}</span>
       </div>

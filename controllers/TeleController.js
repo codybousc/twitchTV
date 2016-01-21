@@ -35,7 +35,8 @@ $scope.makeAPICall = function() {
             bio = "I've got nothing for ya, brother. But consider watching my channel anyway?"
           }
           $scope.allUsers.push({name: name, bio: bio, logo: logo, idNum: idNum, online: online});
-          // console.log("ALLUSERS ARRAY Length= ", $scope.allUsers.length );
+          // console.log("ALLUSERS ARRAY Length= ", $scope.allUsers );
+          // console.log("ALL DATA = ", $scope.data);
           $scope.results = $scope.allUsers;
         }).
         error(function(data, status, headers, config) {

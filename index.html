@@ -11,14 +11,14 @@
 
     <div class="text-center">
       <div class="btn-group" role="group">
-        <button type="button" class="btn btn-secondary" ng-click="displayAllUsers()" >All Users </button>
-        <button type="button" class="btn btn-secondary" ng-click="displayOnlineUsers()" >Live Users </button>
-        <button type="button" class="btn btn-secondary" ng-click="displayOfflineUsers()"> Offline Users</button>
+        <button type="button" class="btn btn-lg btn-secondary" ng-click="displayAllUsers()" >All Users </button>
+        <button type="button" class="btn btn-lg btn-secondary" ng-click="displayOnlineUsers()" >Live Users </button>
+        <button type="button" class="btn btn-lg btn-secondary" ng-click="displayOfflineUsers()"> Offline Users</button>
       </div>
     </div>
     <div class="spacer"></div>
 
-    <div class="container" ng-repeat="(key, value) in results track by $index">
+    <div class="outerContainer" ng-repeat="(key, value) in results track by $index">
       <div class="imageStylin">
           <div class="thumbnail" ng-style="{'background-image': 'url({{value.logo}})'}" style="height: 150px; width 100px; overflow: hidden; background-size: cover; background-position: center;"></div> <br><br>
       </div>

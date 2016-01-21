@@ -9,19 +9,25 @@ body {
    text-decoration: none;
  }
 
+ .btn {
+   background-color: #2196F3;
+ }
+
 .jumbotron {
   text-align: center;
 }
 
-.container {
+.outerContainer {
+  margin: 0 auto;
+  width: 60%;
   margin-top: 20px;
   height: 200px;
-  width: 900px;
   padding-left: 5%;
   padding-right: 5%;
   background-color: #2196F3;
   border-radius: 25px;
   padding-bottom: 10px;
+  overflow: hidden;
 
 }
 
